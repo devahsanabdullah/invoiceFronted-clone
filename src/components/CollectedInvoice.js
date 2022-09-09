@@ -26,7 +26,7 @@ const CollectedInvoice = ({ setstate }) => {
 
 
 
-  const val = items.filter((data) => {
+  const val = items?.filter((data) => {
 
     if (selector.storeVal === "all") {
       return data;
@@ -41,12 +41,19 @@ const CollectedInvoice = ({ setstate }) => {
   })
 
 
+if(val===null||undefined||0)
+{
+  setstate(0)
+}
+else
+{
+  setstate(val&&val.length)
+}
 
 
 
 
-
-  setstate(val.length)
+ 
 
   return (
     <>
