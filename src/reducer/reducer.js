@@ -1,7 +1,9 @@
 const initialState = {
 
    storeVal:[],
-
+   addInvoiceOpen:false,
+   editInvoiceData:{},
+   editInvoiceOpen:false
        
  }
  
@@ -14,7 +16,21 @@ const initialState = {
            storeVal:action.payload
            
                }
-     
+       case 'OPEN_ADD_INVOICE':
+           return {
+           ...state,
+
+           addInvoiceOpen:action.payload
+           
+               }
+                case 'EDIT_INVOICE':
+           return {
+           ...state,
+
+           editInvoiceData:action.payload,
+           editInvoiceOpen:true
+           
+               }
  
        default:
            return state

@@ -8,7 +8,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function DropDown() {
   const [storeVal,setStoreVal]= useState([]);
   const [isChecked, setIsChecked] = useState(Boolean);
   const [ischange, setIsChange] = useState(Boolean);
