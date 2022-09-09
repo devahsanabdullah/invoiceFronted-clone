@@ -3,14 +3,18 @@ import { Dialog, Transition } from "@headlessui/react";
 import ShowForm from "../components/ShowForm";
 import { useSelector } from "react-redux";
 export default function AddInvoice() {
-  const open = useSelector((state) => state.addInvoiceOpen);
-  const dispatchFun = () => {
-    console.log("");
-  };
+  
+  const val = useSelector((state) => state.addInvoiceOpen);
+  console.log("🚀 ~ file: AddInvoice.js ~ line 8 ~ AddInvoice ~ val", val)
+
+  const [open,setOpen]=useState(val);
+  const myVal=()=>{
+    setOpen(false)
+  }
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={dispatchFun}>
+        <Dialog as="div" className="relative z-10" onClose={myVal}>
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"
