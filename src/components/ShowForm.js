@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { SinupValdation } from "./validatorForm";
 
 import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
-
+import { useNavigate } from "react-router-dom";
 function generate() {
   let length = 3;
   let len = 2;
@@ -55,6 +55,7 @@ const initialValues = {
 
 const ShowForm = () => {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
   return (
     <Formik

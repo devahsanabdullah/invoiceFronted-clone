@@ -26,8 +26,6 @@ const CollectedInvoice = ({ setstate }) => {
     }
   });
 
-  // setstate(val.length);
-
   return (
     <>
       {val &&
