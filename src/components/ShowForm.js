@@ -67,7 +67,7 @@ const ShowForm = () => {
       onSubmit={async (values) => {
         // local storage used
 
-        alert(JSON.stringify(values, null, 2));
+        // alert(JSON.stringify(values, null, 2));
         // localStorage.setItem('items', JSON.stringify(values))
         const data = JSON.parse(localStorage.getItem("items"));
         // if (items) {

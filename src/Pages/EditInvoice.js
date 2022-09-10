@@ -59,7 +59,7 @@ export default function EditInvoice() {
                           initialValues={data}
                           validationSchema={SinupValdation}
                           onSubmit={async (values) => {
-                            alert(JSON.stringify(values, null, 2));
+                            // alert(JSON.stringify(values, null, 2));
                             let items = await JSON.parse(
                               localStorage.getItem("items")
                             );
@@ -74,6 +74,7 @@ export default function EditInvoice() {
                               "items",
                               JSON.stringify(items)
                             );
+                            dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })
 
                             navigate("/");
                           }}
@@ -363,13 +364,13 @@ export default function EditInvoice() {
                                               />
                                             </div>
                                             <div>
-                                              <button
+                                              {values.friends.length===1?null:<button
                                                 type="button"
                                                 className="secondary"
                                                 onClick={() => remove(index)}
                                               >
                                                 <i class="fa-solid fa-trash"></i>
-                                              </button>
+                                              </button>}
                                             </div>
                                           </div>
                                         ))}
@@ -402,7 +403,7 @@ export default function EditInvoice() {
                                   <button
                                     className="rounded-3xl bg-slate-300 py-3 px-4 text-white"
                                     type="button"
-                                  // onClick={() => dispatch({type:"EDIT_INVOICE",editInvoiceOpen:false})}
+                                   onClick={() => dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })}
                                   >
                                     Discard
                                   </button>
