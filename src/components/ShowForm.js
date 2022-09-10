@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { SinupValdation } from "./validatorForm";
+import { useDispatch } from "react-redux";
 
 import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -56,6 +57,7 @@ const initialValues = {
 const ShowForm = () => {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
+  const dispatch =useDispatch();
 
   return (
     <Formik
@@ -78,6 +80,7 @@ const ShowForm = () => {
           localStorage.setItem("items", JSON.stringify([...data, values]));
           // setItems(...items,values);
         }
+        dispatch({type:"OPEN_ADD_INVOICE",payload:false})
 
         //  console.log(items)
       }}
@@ -397,6 +400,7 @@ const ShowForm = () => {
               <button
                 className="rounded-3xl bg-slate-300 py-3 px-4 text-white"
                 type="button"
+                onClick={() => dispatch({type:"OPEN_ADD_INVOICE",payload:false})}
               >
                 Discard
               </button>

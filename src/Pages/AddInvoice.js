@@ -1,20 +1,19 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import ShowForm from "../components/ShowForm";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 export default function AddInvoice() {
-  
-  const val = useSelector((state) => state.addInvoiceOpen);
-  console.log("🚀 ~ file: AddInvoice.js ~ line 8 ~ AddInvoice ~ val", val)
+  const open = useSelector((state) => state.addInvoiceOpen);
+  const dispatch = useDispatch();
+  const dispatchFun = () => {
 
-  const [open,setOpen]=useState(val);
-  const myVal=()=>{
-    setOpen(false)
-  }
+
+    // return dispatch({type:"OPEN_ADD_INVOICE",payload:false})
+  };
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={myVal}>
+        <Dialog as="div" className="relative z-10" onClose={dispatchFun}>
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"

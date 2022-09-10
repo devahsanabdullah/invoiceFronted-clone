@@ -20,7 +20,7 @@ function App() {
         <Routes>
         
           <Route path="/" element={<Home />} />
-          <Route path="/invoice-details/:hash" element={<ViewInvoice />} />
+          <Route path="/invoice-details" element={<ViewInvoice />} />
         
         </Routes>
         <AddInvoice />

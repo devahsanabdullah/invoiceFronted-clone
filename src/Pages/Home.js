@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 const Home = () => {
-  let [state, setstate] = useState(0);
+  // let [state, setstate] = useState(0);
   const [items, setItems] = useState([]);
 
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Home = () => {
       <div className="flex flex-row flex-wrap items-center justify-center ml-10 pt-52 md:pl-12">
         <div>
           <h1 className="font-bold text-3xl">Invoices</h1>
-          <p>There are {state} total invoices</p>
+          <p>There are 0 total invoices</p>
         </div>
         {/* drop down */}
         <div className="md:pl-56 pl-16">
@@ -71,7 +71,7 @@ const Home = () => {
               );
 
               return (
-                <Link to={`/invoice-details/${data.hash}`} state={{ data }}>
+                <Link to={`/invoice-details`} state={{ data }}>
                   <div className="grid grid-cols-3  md:grid-cols-5  px-5 shadow-lg bg-white h-42 md:h-20 justify-center items-center shadow-slate-500 rounded-2xl w-6/6 hover:border-[#7C5DFA] mt-4">
                     <h1 className="font-extrabold p-4 ">#{data.hash}</h1>
                     <h1 className="text-lg p-4 text-gray-500">

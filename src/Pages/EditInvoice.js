@@ -7,22 +7,24 @@ import { SinupValdation } from "../components/validatorForm";
 import { useNavigate } from "react-router-dom";
 
 import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function EditInvoice() {
   const open = useSelector((state) => state.editInvoiceOpen);
   const data = useSelector((state) => state.editInvoiceData);
+  console.log("🚀 ~ file: EditInvoice.js ~ line 15 ~ EditInvoice ~ data", data)
   const navigate = useNavigate();
-  const styles =
-    "h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
+  const dispatch = useDispatch();
+  const styles = "h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
 
-  const setOpen = () => {
-    console.log("as");
+  const OpenVal = () => {
+
+    return dispatch({ type: "EDIT_INVOICE", editInvoiceOpen: false })
   };
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={setOpen}>
+        <Dialog as="div" className="relative z-10" onClose={OpenVal}>
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"
@@ -46,7 +48,7 @@ export default function EditInvoice() {
                     <div className="flex h-full   md:w-[650px] flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                       <div className="px-4 sm:px-6">
                         <Dialog.Title className="text-lg font-medium text-gray-900">
-                          <h1 className="font-extrabold ">#{data.hash}</h1>
+                          <h1 className="font-extrabold "></h1>
                         </Dialog.Title>
                       </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6">
@@ -86,7 +88,7 @@ export default function EditInvoice() {
                               <div>
                                 <h4
                                   className="mt-4"
-                                  style={{ color: "#7C5DFA" }}
+
                                 >
                                   Bill From
                                 </h4>
@@ -235,12 +237,12 @@ export default function EditInvoice() {
                                     value={values.color}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    style={{ display: "block" }}
+                                   style={{ display: "block" }}
                                   >
                                     <option value="" label="Select a payment">
                                       Select a payment{" "}
                                     </option>
-                                    <option value="red" label="Net 1 day">
+                                    <option value="Net 1 day" label="Net 1 day">
                                       {" "}
                                       Net 1 day
                                     </option>
@@ -352,11 +354,11 @@ export default function EditInvoice() {
                                                 name="total"
                                                 value={parseInt(
                                                   values.friends[0].item *
-                                                    values.friends[0].quantity
+                                                  values.friends[0].quantity
                                                 )}
                                                 placeholder={parseInt(
                                                   values.friends[0].item *
-                                                    values.friends[0].quantity
+                                                  values.friends[0].quantity
                                                 )}
                                               />
                                             </div>
@@ -400,7 +402,7 @@ export default function EditInvoice() {
                                   <button
                                     className="rounded-3xl bg-slate-300 py-3 px-4 text-white"
                                     type="button"
-                                    onClick={() => setOpen(false)}
+                                  // onClick={() => dispatch({type:"EDIT_INVOICE",editInvoiceOpen:false})}
                                   >
                                     Discard
                                   </button>
@@ -428,12 +430,17 @@ export default function EditInvoice() {
         </Dialog>
       </Transition.Root>
 
-      <button
+      {/* <button
         className="rounded-3xl bg-gray-200 text-[#7e88c3] w-20 h-12 font-bold ml-2"
         onClick={() => setOpen(true)}
       >
         Edit
-      </button>
+      </button> */}
     </>
   );
 }
+
+
+
+
+
