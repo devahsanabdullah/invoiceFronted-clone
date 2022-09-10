@@ -19,7 +19,7 @@ export default function EditInvoice() {
 
   const OpenVal = () => {
 
-    return dispatch({ type: "EDIT_INVOICE", editInvoiceOpen: false })
+    return dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })
   };
   return (
     <>

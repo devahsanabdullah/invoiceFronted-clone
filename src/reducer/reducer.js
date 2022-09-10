@@ -3,7 +3,8 @@ const initialState = {
    storeVal:[],
    addInvoiceOpen:false,
    editInvoiceData:{},
-   editInvoiceOpen:false
+   editInvoiceOpen:false,
+   localData:[],
        
  }
  
@@ -27,10 +28,19 @@ const initialState = {
            return {
            ...state,
 
-           editInvoiceData:action.payload,
-           editInvoiceOpen:true
+           editInvoiceData:action.payload.drawerData,
+           editInvoiceOpen:action.payload.drawerOpen
            
                }
+               case 'LOCAL_DATA':
+                return {
+                ...state,
+                localData:action.payload
+
+     
+                
+                    }
+      
  
        default:
            return state

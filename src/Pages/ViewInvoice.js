@@ -75,7 +75,7 @@ const ViewInvoice = () => {
 
             <button
               className="rounded-3xl bg-gray-200 text-[#7e88c3] w-20 h-12 font-bold ml-2"
-              onClick={() => dispatch({ type: "EDIT_INVOICE", payload: data })}
+              onClick={() => dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:true,drawerData:data} })}
             >
               Edit
             </button>

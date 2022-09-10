@@ -75,14 +75,17 @@ const ShowForm = () => {
         // }
         if (data == null) {
           localStorage.setItem("items", JSON.stringify([values]));
-          //  setItems(values);
+          //  setItems([values]);
+          dispatch({type:"LOCAL_DATA",payload:[values]})
         } else {
           localStorage.setItem("items", JSON.stringify([...data, values]));
-          // setItems(...items,values);
-        }
-        dispatch({type:"OPEN_ADD_INVOICE",payload:false})
+          //  setItems([...data,values]);
+          dispatch({type:"LOCAL_DATA",payload:[...data,values]})
+        }   
+       dispatch({type:"OPEN_ADD_INVOICE",payload:false})
+  
+      
 
-        //  console.log(items)
       }}
     >
       {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -370,13 +373,13 @@ const ShowForm = () => {
                         </div>
                         <div>
                           {/* toatl end */}
-                          <button
+                          {values.friends.length===1?null:<button
                             type="button"
                             className="secondary"
                             onClick={() => remove(index)}
                           >
                             <i class="fa-solid fa-trash"></i>
-                          </button>
+                          </button>}
                         </div>
                       </div>
                     ))}
