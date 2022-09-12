@@ -46,7 +46,10 @@ const ViewInvoice = () => {
   // end
   const navlink = useNavigate();
 
-  var sum = parseInt(data.friends[0].quantity * data.friends[0].item);
+
+  var sum = data.friends.reduce((accumulator, object,index) => {
+    return accumulator + (object.quantity * object.item);      }, 0)
+
 
   return (
     <>

@@ -310,7 +310,7 @@ export default function EditInvoice() {
                                             <div>
                                               <Field
                                                 name={`friends.${index}.name`}
-                                                className={styles}
+                                                className={`${styles}`}
                                                 placeholder="Name"
                                                 type="text"
                                               />
@@ -354,17 +354,17 @@ export default function EditInvoice() {
                                                 disabled
                                                 name="total"
                                                 value={parseInt(
-                                                  values.friends[0].item *
-                                                  values.friends[0].quantity
+                                                  values.friends[index].item *
+                                                  values.friends[index].quantity
                                                 )}
                                                 placeholder={parseInt(
-                                                  values.friends[0].item *
-                                                  values.friends[0].quantity
+                                                  values.friends[index].item *
+                                                  values.friends[index].quantity
                                                 )}
                                               />
                                             </div>
                                             <div>
-                                              {values.friends.length===1?null:<button
+                                              {index===0?null:<button
                                                 type="button"
                                                 className="secondary"
                                                 onClick={() => remove(index)}
@@ -376,11 +376,8 @@ export default function EditInvoice() {
                                         ))}
                                       <button
                                         type="button"
-                                        className="secondary w-52 rounded-3xl p-2 mt-4"
-                                        style={{
-                                          color: "white",
-                                          backgroundColor: "red",
-                                        }}
+                                        className="bg-slate-700 w-full mt-7 text-center p-3.5 rounded-full text-white cursor-pointer"
+                                        
                                         onClick={() =>
                                           push({
                                             name: "",

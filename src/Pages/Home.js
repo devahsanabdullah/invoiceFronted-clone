@@ -4,7 +4,7 @@ import DropDown from "../components/DropDown";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-
+const Total=0;
 const Home = () => {
   // let [state, setstate] = useState(0);
   const [items, setItems] = useState([]);
@@ -29,6 +29,11 @@ const Home = () => {
    
     dispatch({type:"SET_DATA",payload:"all"})
    }, [data]);
+
+  
+  
+    
+  
 
   const val = items?.filter((data) => {
     if (selector.storeVal === "all") {
@@ -77,9 +82,12 @@ const Home = () => {
         <>
           {val &&
             val.map((data) => {
-              var sum = parseInt(
-                data.friends[0].quantity * data.friends[0].item
-              );
+
+               var sum = data.friends.reduce((accumulator, object,index) => {
+     return accumulator + (object.quantity * object.item);      }, 0)
+ 
+           
+             
 
               return (
                 <Link to={`/invoice-details`} state={{ data }}>

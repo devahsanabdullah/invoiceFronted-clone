@@ -48,8 +48,8 @@ const initialValues = {
   friends: [
     {
       name: "",
-      quantity: "",
-      item: "",
+      quantity: 0,
+      item: 0,
     },
   ],
 };
@@ -361,19 +361,19 @@ const ShowForm = () => {
                             className="h-14 mt-1 rounded-lg w-full  placeholder:text-black placeholder:text-center"
                             disabled
                             name="total"
-                            value={parseInt(
-                              values.friends[0].item *
-                                values.friends[0].quantity
-                            )}
-                            placeholder={parseInt(
-                              values.friends[0].item *
-                                values.friends[0].quantity
-                            )}
+                            value={
+                              values.friends[index].item *
+                                values.friends[index].quantity
+                            }
+                            placeholder={
+                              values.friends[index].item *
+                                values.friends[index].quantity
+                            }
                           />
                         </div>
                         <div>
                           {/* toatl end */}
-                          {values.friends.length===1?null:<button
+                          {index===0?null:<button
                             type="button"
                             className="secondary"
                             onClick={() => remove(index)}
@@ -385,9 +385,9 @@ const ShowForm = () => {
                     ))}
                   <button
                     type="button"
-                    className="secondary w-52 rounded-3xl p-2 mt-4"
-                    style={{ color: "white", backgroundColor: "red" }}
-                    onClick={() => push({ name: "", quantity: "", item: "" })}
+                    className="bg-slate-700 w-full mt-7 text-center p-3.5 rounded-full text-white cursor-pointer"
+                    
+                    onClick={() => push({ name: "", quantity: 0, item: 0 })}
                   >
                     <i class="fa-solid fa-plus"></i> Add Item
                   </button>
