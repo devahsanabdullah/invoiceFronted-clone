@@ -99,7 +99,7 @@ const Home = () => {
              
 
               return (
-                <Link to={`/invoice-details`} state={{ data }} >
+                <Link to={`/invoice-details`}   onClick={()=>  dispatch({ type: "VIEW_DATA", payload: data})} >
                   <div >
                   <div className="grid grid-cols-3  md:grid-cols-5 hover:shadow-sm px-5 shadow-lg bg-white h-42 md:h-20 justify-center items-center hover:outline-[#7C5DFA] hover:outline-3 hover:outline shadow-slate-500 rounded-2xl w-6/6  mt-4">
                     <h1 className="font-extrabold p-4 ">

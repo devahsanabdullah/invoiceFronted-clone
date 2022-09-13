@@ -394,7 +394,7 @@ React.useEffect(() => {
 
           {/* button */}
 
-          <div className="grid grid-cols-3  lg:gap-3 shadow-zinc-900 shadow-lg h-28 px-5 pt-10 pb-5 rounded-3xl mt-10 bg-transparent w-5/5">
+          <div className="flex justify-between shadow-zinc-900 shadow-lg h-28 px-5 pt-10 pb-5 rounded-3xl mt-10 bg-transparent w-5/5">
             <div>
               <button
                 className="rounded-3xl bg-slate-300 py-3 px-4 text-white"

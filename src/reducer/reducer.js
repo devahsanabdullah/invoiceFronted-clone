@@ -5,6 +5,7 @@ const initialState = {
    editInvoiceData:{},
    editInvoiceOpen:false,
    localData:[],
+   viewData:[],
        
  }
  
@@ -37,9 +38,16 @@ const initialState = {
                 ...state,
                 localData:action.payload
 
-     
                 
                     }
+                    case 'VIEW_DATA':
+                        return {
+                        ...state,
+                        viewData:action.payload
+        
+                        
+                            }            
+    
       
  
        default:

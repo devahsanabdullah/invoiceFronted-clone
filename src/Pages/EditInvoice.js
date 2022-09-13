@@ -20,7 +20,7 @@ export default function EditInvoice() {
 
   const OpenVal = () => {
 
-    return dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })
+    // return dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })
   };
   return (
     <>
@@ -75,9 +75,11 @@ export default function EditInvoice() {
                               "items",
                               JSON.stringify(items)
                             );
+                            dispatch({ type: "VIEW_DATA", payload: values})
+                           
                             dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })
 
-                            navigate("/");
+                          
                           }}
                         >
                           {({
@@ -385,8 +387,8 @@ export default function EditInvoice() {
                                 </FieldArray>
                               </div>
 
-                              <div className="flex flex-warp shadow-zinc-900 shadow-lg h-28 px-5 pt-10 pb-5 rounded-3xl mt-10 bg-transparent w-5/5">
-                                <div></div>
+                              <div className="flex justify-between shadow-zinc-900 shadow-lg h-28 px-5 pt-10 pb-5 rounded-3xl mt-10 bg-transparent w-5/5">
+                               
                                 <div>
                                   <button
                                     className="rounded-3xl bg-slate-300 py-3 px-4 text-white"
@@ -399,7 +401,7 @@ export default function EditInvoice() {
 
                                 <div>
                                   <button
-                                    className="rounded-3xl bg-[#7C5DFA] py-2 px-2 text-white"
+                                    className="rounded-3xl bg-[#7C5DFA] py-3 px-2 text-white"
                                     type="submit"
                                   >
                                     Save & Change

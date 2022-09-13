@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 
 import { BiChevronLeft } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 // import Update from './components/Update';
 
 const ViewInvoice = () => {
@@ -10,12 +10,18 @@ const ViewInvoice = () => {
   const [openDraw, setOpenDraw] = useState(true);
   const dispatch = useDispatch();
   const location = useLocation();
-  const data = location.state.data;
+  const data =useSelector((state)=>state.viewData)
+
+  // const data = location.state.data;
   useEffect(() => {
     let value = JSON.parse(localStorage.getItem("items"));
+  
+      setItems(value);
+  
 
-    setItems(value);
-  }, [data]);
+    
+
+  }, []);
 
   const removeData = (id) => {
     console.log("🚀 ~ file: ViewInvoice.js ~ line 23 ~ removeData ~ items", items)
@@ -65,9 +71,9 @@ const ViewInvoice = () => {
           <button onClick={() => navlink("/")}>GO BACK</button>
         </div>
         <div className=" py-5 sm:px-6 grid md:grid-cols-2 grid-cols-1 mb-5 shadow-2xl   bg-[#f8f8f8] rounded-2xl mt-4 h-42 md:h-28">
-          <div className="flex justify-center flex-wrap items-center ">
+          <div className="flex md:justify-start justify-center flex-wrap items-center ">
             <h3 className="text-lg font-medium leading-6 text-gray-900 mr-4">
-              status
+              Status
             </h3>
             {data.status === "pending" ? (
               <button className="text-[#ff8f00] font-bold capitalize bg-orange-100 w-24 h-12 rounded-md">
@@ -80,7 +86,7 @@ const ViewInvoice = () => {
             )}
           </div>
 
-          <div className="flex justify-center flex-wrap mt-3">
+          <div className="flex justify-center md:justify-end flex-wrap mt-3">
             {/* <Update data={data} /> */}
 
             <button
@@ -180,9 +186,9 @@ const ViewInvoice = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 bg-black text-white p-5 rounded-xl">
+            <div className="flex justify-between bg-black text-white p-5 rounded-xl">
               <h1>AMOUNT DUE</h1>
-              <div></div>
+              
               <h1>${sum}</h1>
             </div>
           </div>
