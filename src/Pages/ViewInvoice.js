@@ -15,15 +15,22 @@ const ViewInvoice = () => {
     let value = JSON.parse(localStorage.getItem("items"));
 
     setItems(value);
-  }, []);
+  }, [data]);
 
   const removeData = (id) => {
-    const val = items.filter((item) => item.hash !== id);
+    console.log("🚀 ~ file: ViewInvoice.js ~ line 23 ~ removeData ~ items", items)
+ 
+    const val = items.filter((item) => {
+     
+      return item.hash!==id
+    })
+    console.log("🚀 ~ file: ViewInvoice.js ~ line 23 ~ removeData ~ val", val)
+
     localStorage.setItem("items", JSON.stringify(val));
     if (items.length === 0) {
       localStorage.removeItem("items");
     }
-    navlink("/");
+     navlink("/");
   };
   //  status changer
   const changeStatus = async () => {
@@ -32,7 +39,7 @@ const ViewInvoice = () => {
       status: "paid",
     };
 
-    let items = await JSON.parse(localStorage.getItem("items"));
+     let items = await JSON.parse(localStorage.getItem("items"));
 
     for (let i = 0; i < items.length; i++) {
       if (newobj.hash === items[i].hash) {

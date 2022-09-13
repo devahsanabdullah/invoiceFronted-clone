@@ -14,21 +14,28 @@ const Home = () => {
   const selector = useSelector((state) => state);
 
  
-  const data =selector.localData
+  const newData =selector.localData
   React.useEffect(() => {
    
 
     
-    let value = JSON.parse(localStorage.getItem("items"));
+    let value = JSON.parse(localStorage.getItem('items')) || [];
+    console.log("🚀 ~ file: Home.js ~ line 23 ~ React.useEffect ~ value", value)
 
-    if(data == null){
-      setItems(value);
-    }else{
-      setItems(value)
-    }
+    setItems(value);
+  
+
+
+    // if(newData== null||undefined){
+
+    //   setItems([value]);
+    // }else{
+
+    //   setItems([value])
+    // }
    
     dispatch({type:"SET_DATA",payload:"all"})
-   }, [data]);
+   }, [newData]);
 
   
   
@@ -43,6 +50,7 @@ const Home = () => {
       return data;
     }
   });
+
   return (
     <>
       <div className="flex flex-row flex-wrap items-center justify-center ml-10 pt-52 md:pl-12">
@@ -81,7 +89,8 @@ const Home = () => {
         {/* <CollectedInvoice setstate={setstate} /> */}
         <>
           {val &&
-            val.map((data) => {
+            val.map((data,index) => {
+             
 
                var sum = data.friends.reduce((accumulator, object,index) => {
      return accumulator + (object.quantity * object.item);      }, 0)
@@ -90,9 +99,12 @@ const Home = () => {
              
 
               return (
-                <Link to={`/invoice-details`} state={{ data }}>
-                  <div className="grid grid-cols-3  md:grid-cols-5  px-5 shadow-lg bg-white h-42 md:h-20 justify-center items-center shadow-slate-500 rounded-2xl w-6/6 hover:border-[#7C5DFA] mt-4">
-                    <h1 className="font-extrabold p-4 ">{`#${data.hash}`}</h1>
+                <Link to={`/invoice-details`} state={{ data }} >
+                  <div >
+                  <div className="grid grid-cols-3  md:grid-cols-5 hover:shadow-sm px-5 shadow-lg bg-white h-42 md:h-20 justify-center items-center hover:outline-[#7C5DFA] hover:outline-3 hover:outline shadow-slate-500 rounded-2xl w-6/6  mt-4">
+                    <h1 className="font-extrabold p-4 ">
+                      {data.hash}
+                    </h1>
                     <h1 className="text-lg p-4 text-gray-500">
                       {data.dateInvoice}
                     </h1>
@@ -111,6 +123,7 @@ const Home = () => {
                         </h1>
                       )}
                     </div>
+                  </div>
                   </div>
                 </Link>
               );

@@ -52,8 +52,7 @@ export default function DropDown() {
      
     }
   }
- 
-  console.log(storeVal)
+
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>

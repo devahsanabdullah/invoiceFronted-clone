@@ -12,10 +12,11 @@ import { useSelector, useDispatch } from "react-redux";
 export default function EditInvoice() {
   const open = useSelector((state) => state.editInvoiceOpen);
   const data = useSelector((state) => state.editInvoiceData);
-  console.log("🚀 ~ file: EditInvoice.js ~ line 15 ~ EditInvoice ~ data", data)
+  // console.log("🚀 ~ file: EditInvoice.js ~ line 15 ~ EditInvoice ~ data", data)
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const styles = "h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
+  const styles = "h-14 mt-1 font-bold text-base rounded-md w-full border-[#dfe3fa] border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
+  const stylePara="text-[#7e88c3] pt-4 font-medium text-base leading-6 font-sans";
 
   const OpenVal = () => {
 
@@ -48,10 +49,10 @@ export default function EditInvoice() {
                     <div className="flex h-full   md:w-[650px] flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                       <div className="px-4 sm:px-6">
                         <Dialog.Title className="text-lg font-medium text-gray-900">
-                          <h1 className="font-extrabold "></h1>
+                          <h1 className="font-extrabold text-2xl text-start ml-6">#{data.hash}</h1>
                         </Dialog.Title>
                       </div>
-                      <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                      <div className="relative mt-6 flex-1 px-8 ml-2 md:ml-6 md:mr-6 sm:px-6">
                         {/* Replace with your content */}
 
                         <Formik
@@ -94,7 +95,7 @@ export default function EditInvoice() {
                                   Bill From
                                 </h4>
 
-                                <p className="text-gray-500">Street Address</p>
+                                <p className="text-[#7e88c3] font-medium text-base leading-6 font-sans">Street Address</p>
                                 <Field
                                   className={styles}
                                   name="StreetAdrees_from"
@@ -107,7 +108,7 @@ export default function EditInvoice() {
                               </div>
                               <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-3">
                                 <div>
-                                  <p className="text-gray-600">City</p>
+                                  <p className={stylePara}>City</p>
                                   <Field className={styles} name="city_from" />
                                   <ErrorMessage
                                     name="city_from"
@@ -116,7 +117,7 @@ export default function EditInvoice() {
                                   />
                                 </div>
                                 <div>
-                                  <p className="text-gray-400">Post code</p>
+                                  <p className={stylePara}>Post code</p>
                                   <Field
                                     className={styles}
                                     name="postCode_from"
@@ -128,7 +129,7 @@ export default function EditInvoice() {
                                   />
                                 </div>
                                 <div>
-                                  <p className="text-gray-400">Country</p>
+                                  <p className={stylePara}>Country</p>
                                   <Field
                                     className={styles}
                                     name="country_from"
@@ -146,7 +147,7 @@ export default function EditInvoice() {
                               </h4>
 
                               <div>
-                                <p className="text-gray-400">Client's Name</p>
+                                <p className={stylePara}>Client's Name</p>
                                 <Field
                                   className={styles}
                                   name="cliendName_to"
@@ -159,7 +160,7 @@ export default function EditInvoice() {
                               </div>
 
                               <div>
-                                <p className="text-gray-400">Client's Email</p>
+                                <p className={stylePara}>Client's Email</p>
                                 <Field
                                   className={styles}
                                   type="email"
@@ -174,7 +175,7 @@ export default function EditInvoice() {
                               </div>
 
                               <div>
-                                <p className="text-gray-400">Street Address</p>
+                                <p className={stylePara}>Street Address</p>
                                 <Field className={styles} name="cliendAdress" />
                                 <ErrorMessage
                                   name="cliendAdress"
@@ -184,7 +185,7 @@ export default function EditInvoice() {
                               </div>
                               <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-3">
                                 <div>
-                                  <p className="text-gray-400">City</p>
+                                  <p className={stylePara}>City</p>
                                   <Field className={styles} name="cliendCity" />
                                   <ErrorMessage
                                     name="cliendCity"
@@ -193,7 +194,7 @@ export default function EditInvoice() {
                                   />
                                 </div>
                                 <div>
-                                  <p className="text-gray-400">Post code</p>
+                                  <p className={stylePara}>Post code</p>
                                   <Field className={styles} name="cliendPost" />
                                   <ErrorMessage
                                     name="cliendPost"
@@ -202,7 +203,7 @@ export default function EditInvoice() {
                                   />
                                 </div>
                                 <div>
-                                  <p className="text-gray-400">Country</p>
+                                  <p className={stylePara}>Country</p>
                                   <Field
                                     className={styles}
                                     name="cliend_country"
@@ -217,7 +218,7 @@ export default function EditInvoice() {
 
                               <div className="grid grid-cols-2  lg:gap-3">
                                 <div>
-                                  <p className="text-gray-400">Invoice Date</p>
+                                  <p className={stylePara}>Invoice Date</p>
                                   <Field
                                     type="date"
                                     className={styles}
@@ -230,7 +231,7 @@ export default function EditInvoice() {
                                   />
                                 </div>
                                 <div>
-                                  <p className="text-gray-400">payment term</p>
+                                  <p className={stylePara}>payment term</p>
 
                                   <select
                                     name="paymentTerm"
@@ -269,7 +270,7 @@ export default function EditInvoice() {
                               </div>
 
                               <div>
-                                <p className="text-gray-400">
+                                <p className={stylePara}>
                                   Project description
                                 </p>
                                 <Field
@@ -291,12 +292,7 @@ export default function EditInvoice() {
                                 >
                                   Item List
                                 </h1>
-                                <div className="grid grid-cols-5 mt-2 pl-2 gap-3 ">
-                                  <p className="text-gray-400">Item Name</p>
-                                  <p className="text-gray-400">Qty.</p>
-                                  <p className="text-gray-400">Price</p>
-                                  <p className="text-gray-400">Total</p>
-                                </div>
+                              
 
                                 <FieldArray name="friends">
                                   {({ insert, remove, push }) => (
@@ -304,13 +300,14 @@ export default function EditInvoice() {
                                       {values.friends.length > 0 &&
                                         values.friends.map((friend, index) => (
                                           <div
-                                            className="grid grid-cols-5 mt-2 pl-2 gap-3 "
+                                            className="grid grid-cols-6 mt-2  gap-3 "
                                             key={index}
                                           >
-                                            <div>
+                                            <div className="col-span-2" >
+                                            <p className={stylePara}>Item Name</p>
                                               <Field
                                                 name={`friends.${index}.name`}
-                                                className={`${styles}`}
+                                                className={`${styles} mr-8 `}
                                                 placeholder="Name"
                                                 type="text"
                                               />
@@ -320,10 +317,11 @@ export default function EditInvoice() {
                                                 className="text-red-400"
                                               />
                                             </div>
-                                            <div>
+                                            <div className="flex flex-col justify-center items-center" >
+                                            <p className={`${stylePara}  mr-4 w-12`}>Qty.</p>
                                               <Field
                                                 name={`friends.${index}.quantity`}
-                                                className={styles}
+                                                className={`${styles}  ml-2 mr-4 w-16`}
                                                 placeholder="Quantity"
                                                 type="number"
                                               />
@@ -334,9 +332,10 @@ export default function EditInvoice() {
                                               />
                                             </div>
                                             <div>
+                                            <p className={`${stylePara}  mr-2 w-12`}>Price</p>
                                               <Field
                                                 name={`friends.${index}.item`}
-                                                className={styles}
+                                                className={`${styles}  ml-2 mr-4 w-16`}
                                                 placeholder="item"
                                                 type="number"
                                               />
@@ -345,28 +344,20 @@ export default function EditInvoice() {
                                                 component="div"
                                                 className="text-red-400"
                                               />
-                                            </div>
+                                              </div>
 
-                                            <div>
-                                              <input
-                                                type="text"
-                                                className="h-14 mt-1 rounded-lg w-full  placeholder:text-black placeholder:text-center"
-                                                disabled
-                                                name="total"
-                                                value={parseInt(
-                                                  values.friends[index].item *
-                                                  values.friends[index].quantity
-                                                )}
-                                                placeholder={parseInt(
-                                                  values.friends[index].item *
-                                                  values.friends[index].quantity
-                                                )}
-                                              />
-                                            </div>
-                                            <div>
+                                              <div>
+                                              <p className={`${stylePara} ml-4 mr-4 w-10`}>Total</p>
+                                              <div className="flex justify-center items-center pt-4 font-bold"> {values.friends[index].item *
+                                                  values.friends[index].quantity}</div>
+                                                  </div>
+                                            
+
+                                         
+                                            <div className="flex justify-center items-cente pt-12">
                                               {index===0?null:<button
                                                 type="button"
-                                                className="secondary"
+                                                className="secondary text-red-600"
                                                 onClick={() => remove(index)}
                                               >
                                                 <i class="fa-solid fa-trash"></i>
@@ -386,7 +377,7 @@ export default function EditInvoice() {
                                           })
                                         }
                                       >
-                                        <i class="fa-solid fa-plus"></i> Add
+                                       + Add
                                         Item
                                       </button>
                                     </div>

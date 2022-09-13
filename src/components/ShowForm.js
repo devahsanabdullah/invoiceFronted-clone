@@ -5,59 +5,68 @@ import { useDispatch } from "react-redux";
 
 import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
 import { useNavigate } from "react-router-dom";
-function generate() {
-  let length = 3;
-  let len = 2;
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const number = "1234567890";
-  let result = " ";
-  let numb = "";
-  const charactersLength = characters.len;
-  const numberLenght = number.length;
-  for (let i = 0; i < len; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  for (let i = 0; i < length; i++) {
-    result += number.charAt(Math.floor(Math.random() * numberLenght));
-  }
-  return result + numb;
-}
-const uniqeKey = generate();
-
-const initialValues = {
-  // from bill start
-
-  hash: uniqeKey,
-  StreetAdrees_from: "",
-  city_from: "",
-  postCode_from: "",
-  country_from: "",
-  // from bill end to bill start
-  cliendName_to: "",
-  cliendEmail_to: "",
-  cliendAdress: "",
-  cliendCity: "",
-  cliendPost: "",
-  cliend_country: "",
-  // end cliend info
-  total: "",
-  dateInvoice: "",
-  paymentTerm: "",
-  description: "",
-  status: "pending",
-  friends: [
-    {
-      name: "",
-      quantity: 0,
-      item: 0,
-    },
-  ],
-};
 
 const ShowForm = () => {
-  const [items, setItems] = useState([]);
+  function generate() {
+    let length = 3;
+    let len = 2;
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const number = "1234567890";
+    let result = " ";
+    let numb = "";
+    const charactersLength = characters.len;
+    const numberLenght = number.length;
+    for (let i = 0; i < len; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    for (let i = 0; i < length; i++) {
+      result += number.charAt(Math.floor(Math.random() * numberLenght));
+    }
+    return result + numb;
+  }
+  const uniqeKey = generate();
+  
+  const initialValues = {
+    // from bill start
+  
+    hash: uniqeKey,
+    StreetAdrees_from: "",
+    city_from: "",
+    postCode_from: "",
+    country_from: "",
+    // from bill end to bill start
+    cliendName_to: "",
+    cliendEmail_to: "",
+    cliendAdress: "",
+    cliendCity: "",
+    cliendPost: "",
+    cliend_country: "",
+    // end cliend info
+    total: "",
+    dateInvoice: "",
+    paymentTerm: "",
+    description: "",
+    status: "pending",
+    friends: [
+      {
+        name: "",
+        quantity: 0,
+        item: 0,
+      },
+    ],
+  };
+  
+
   const navigate = useNavigate();
   const dispatch =useDispatch();
+  const styles = "h-14 mt-1 font-bold text-base rounded-md w-full border-[#dfe3fa] border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
+  const stylePara="text-[#7e88c3] pt-4 font-medium text-base leading-6 font-sans";
+React.useEffect(() => {
+  generate()
+
+ 
+}, [initialValues])
+
 
   return (
     <Formik
@@ -83,6 +92,8 @@ const ShowForm = () => {
           dispatch({type:"LOCAL_DATA",payload:[...data,values]})
         }   
        dispatch({type:"OPEN_ADD_INVOICE",payload:false})
+
+       generate()
   
       
 
@@ -95,9 +106,9 @@ const ShowForm = () => {
               Bill From
             </h4>
             {/* from bill start */}
-            <p className="text-gray-500">Street Address</p>
+            <p className={stylePara}>Street Address</p>
             <Field
-              className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+              className={styles}
               name="StreetAdrees_from"
             />
             <ErrorMessage
@@ -108,9 +119,9 @@ const ShowForm = () => {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-3">
             <div>
-              <p className="text-gray-600">City</p>
+              <p className={stylePara}>City</p>
               <Field
-                className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+                className={styles}
                 name="city_from"
               />
               <ErrorMessage
@@ -120,9 +131,9 @@ const ShowForm = () => {
               />
             </div>
             <div>
-              <p className="text-gray-400">Post code</p>
+              <p className={stylePara}>Post code</p>
               <Field
-                className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+                className={styles}
                 name="postCode_from"
               />
               <ErrorMessage
@@ -132,9 +143,9 @@ const ShowForm = () => {
               />
             </div>
             <div>
-              <p className="text-gray-400">Country</p>
+              <p className={stylePara}>Country</p>
               <Field
-                className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+                className={styles}
                 name="country_from"
               />
               <ErrorMessage
@@ -151,9 +162,9 @@ const ShowForm = () => {
           </h4>
 
           <div>
-            <p className="text-gray-400">Client's Name</p>
+            <p className={stylePara}>Client's Name</p>
             <Field
-              className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+              className={styles}
               name="cliendName_to"
             />
             <ErrorMessage
@@ -164,9 +175,9 @@ const ShowForm = () => {
           </div>
 
           <div>
-            <p className="text-gray-400">Client's Email</p>
+            <p className={stylePara}>Client's Email</p>
             <Field
-              className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+              className={styles}
               type="email"
               placeholder="e.g email@example.com"
               name="cliendEmail_to"
@@ -179,9 +190,9 @@ const ShowForm = () => {
           </div>
 
           <div>
-            <p className="text-gray-400">Street Address</p>
+            <p className={stylePara}>Street Address</p>
             <Field
-              className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+              className={styles}
               name="cliendAdress"
             />
             <ErrorMessage
@@ -192,9 +203,9 @@ const ShowForm = () => {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-3">
             <div>
-              <p className="text-gray-400">City</p>
+              <p className={stylePara}>City</p>
               <Field
-                className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+                className={styles}
                 name="cliendCity"
               />
               <ErrorMessage
@@ -204,9 +215,9 @@ const ShowForm = () => {
               />
             </div>
             <div>
-              <p className="text-gray-400">Post code</p>
+              <p className={stylePara}>Post code</p>
               <Field
-                className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+                className={styles}
                 name="cliendPost"
               />
               <ErrorMessage
@@ -216,9 +227,9 @@ const ShowForm = () => {
               />
             </div>
             <div>
-              <p className="text-gray-400">Country</p>
+              <p className={stylePara}>Country</p>
               <Field
-                className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+                className={styles}
                 name="cliend_country"
               />
               <ErrorMessage
@@ -232,10 +243,10 @@ const ShowForm = () => {
 
           <div className="grid grid-cols-2  lg:gap-3">
             <div>
-              <p className="text-gray-400">Invoice Date</p>
+              <p className={stylePara}>Invoice Date</p>
               <Field
                 type="date"
-                className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+                className={styles}
                 name="dateInvoice"
               />
               <ErrorMessage
@@ -245,13 +256,11 @@ const ShowForm = () => {
               />
             </div>
             <div>
-              <p className="text-gray-400">payment term</p>
-              {/* payment method  */}
-              {/* <Field type="text"  className='h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] ' name="paymentTerm"  />
-        <ErrorMessage name='paymentTerm' component="div" className='text-red-600'/> */}
+              <p className={stylePara}>payment term</p>
+              
               <select
                 name="paymentTerm"
-                className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+                className={styles}
                 value={values.color}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -277,9 +286,9 @@ const ShowForm = () => {
           </div>
 
           <div>
-            <p className="text-gray-400">Project description</p>
+            <p className={stylePara}>Project description</p>
             <Field
-              className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
+              className={styles}
               name="description"
               placeholder="e.g. Graphic Design Services"
             />
@@ -296,12 +305,7 @@ const ShowForm = () => {
             <h1 className="font-bold text-3xl" style={{ color: "#7C5DFA" }}>
               Item List
             </h1>
-            <div className="grid grid-cols-5 mt-2 pl-2 gap-3 ">
-              <p className="text-gray-400">Item Name</p>
-              <p className="text-gray-400">Qty.</p>
-              <p className="text-gray-400">Price</p>
-              <p className="text-gray-400">Total</p>
-            </div>
+           
 
             <FieldArray name="friends">
               {({ insert, remove, push }) => (
@@ -309,79 +313,71 @@ const ShowForm = () => {
                   {values.friends.length > 0 &&
                     values.friends.map((friend, index) => (
                       <div
-                        className="grid grid-cols-5 mt-2 pl-2 gap-3 "
-                        key={index}
-                      >
-                        <div>
-                          {/* <label htmlFor={`friends.${index}.name`}>Name</label> */}
-                          <Field
-                            name={`friends.${index}.name`}
-                            className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
-                            placeholder="Name"
-                            type="text"
-                          />
-                          <ErrorMessage
-                            name={`friends.${index}.name`}
-                            component="div"
-                            className="text-red-400"
-                          />
-                        </div>
-                        <div>
-                          {/* <label htmlFor={`friends.${index}.email`}>Email</label> */}
-                          <Field
-                            name={`friends.${index}.quantity`}
-                            className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
-                            placeholder="Quantity"
-                            type="number"
-                          />
-                          <ErrorMessage
-                            name={`friends.${index}.quantity`}
-                            component="div"
-                            className="text-red-400"
-                          />
-                        </div>
-                        <div>
-                          {/* <label htmlFor={`friends.${index}.email`}>Email</label> */}
-                          <Field
-                            name={`friends.${index}.item`}
-                            className="h-14 mt-1 rounded-lg w-full border-gray-400 border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA] "
-                            placeholder="item"
-                            type="number"
-                          />
-                          <ErrorMessage
-                            name={`friends.${index}.item`}
-                            component="div"
-                            className="text-red-400"
-                          />
-                        </div>
-                        {/* total start */}
-                        <div>
-                          <input
-                            type="text"
-                            className="h-14 mt-1 rounded-lg w-full  placeholder:text-black placeholder:text-center"
-                            disabled
-                            name="total"
-                            value={
-                              values.friends[index].item *
-                                values.friends[index].quantity
-                            }
-                            placeholder={
-                              values.friends[index].item *
-                                values.friends[index].quantity
-                            }
-                          />
-                        </div>
-                        <div>
-                          {/* toatl end */}
-                          {index===0?null:<button
-                            type="button"
-                            className="secondary"
-                            onClick={() => remove(index)}
-                          >
-                            <i class="fa-solid fa-trash"></i>
-                          </button>}
-                        </div>
+                      className="grid grid-cols-6 mt-2  gap-3 "
+                      key={index}
+                    >
+                      <div className="col-span-2" >
+                      <p className={stylePara}>Item Name</p>
+                        <Field
+                          name={`friends.${index}.name`}
+                          className={`${styles} mr-8 `}
+                          
+                          type="text"
+                        />
+                        <ErrorMessage
+                          name={`friends.${index}.name`}
+                          component="div"
+                          className="text-red-400"
+                        />
                       </div>
+                      <div className="flex flex-col justify-center items-center" >
+                      <p className={`${stylePara}  mr-4 w-1`}>Qty.</p>
+                        <Field
+                          name={`friends.${index}.quantity`}
+                          className={`${styles} ml-2 mr-4 w-16`}
+                          
+                          type="number"
+                        />
+                        <ErrorMessage
+                          name={`friends.${index}.quantity`}
+                          component="div"
+                          className="text-red-400"
+                        />
+                      </div>
+                      <div>
+                      <p className={`${stylePara} ml-2 mr-2 w-12`}>Price</p>
+                        <Field
+                          name={`friends.${index}.item`}
+                          className={`${styles} ml-2 mr-4 w-16`}
+                         
+                          type="number"
+                        />
+                        <ErrorMessage
+                          name={`friends.${index}.item`}
+                          component="div"
+                          className="text-red-400"
+                        />
+                        </div>
+
+                        <div>
+                        <p className={`${stylePara} ml-4 mr-4 w-10`}>Total</p>
+                        <div className="flex justify-center items-center pt-4 font-bold"> {values.friends[index].item *
+                            values.friends[index].quantity}</div>
+                            </div>
+                      
+
+                   
+                      <div className="flex justify-center items-cente pt-12">
+                        
+                        {index===0?null:<button
+                          type="button"
+                          className="secondary text-red-600"
+                          onClick={() => remove(index)}
+                        >
+                          <i class="fa-solid fa-trash"></i>
+                        </button>}
+                      </div>
+                    </div>
                     ))}
                   <button
                     type="button"

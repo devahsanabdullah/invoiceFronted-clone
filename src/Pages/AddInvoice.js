@@ -6,10 +6,10 @@ export default function AddInvoice() {
   const open = useSelector((state) => state.addInvoiceOpen);
   const dispatch = useDispatch();
   const dispatchFun = () => {
-
-
     // return dispatch({type:"OPEN_ADD_INVOICE",payload:false})
   };
+
+  
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
@@ -40,7 +40,7 @@ export default function AddInvoice() {
                           <h1 className="font-bold text-3xl">New Invoice</h1>
                         </Dialog.Title>
                       </div>
-                      <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                      <div className="relative mt-6 flex-1 px-8 ml-2 md:ml-6 md:mr-6 sm:px-6">
                         {/* Replace with your content */}
                         <ShowForm />
                         {/* /End replace */}
