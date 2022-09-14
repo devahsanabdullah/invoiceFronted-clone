@@ -3,11 +3,18 @@ import React, { useState } from "react";
 import { SinupValdation } from "./validatorForm";
 import { useDispatch } from "react-redux";
 
-import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
+import { Formik, Field, Form, ErrorMessage, FieldArray,getIn} from "formik";
 import { useNavigate } from "react-router-dom";
 
 
 const ShowForm = () => {
+  function getStyles(errors, fieldName) {
+    if (getIn(errors, fieldName)) {
+      return {
+        border: '1px solid red'
+      }
+    }
+  }
   function generate() {
     let length = 3;
     let len = 2;
@@ -100,7 +107,7 @@ React.useEffect(() => {
 
       }}
     >
-      {({ values, handleChange, handleBlur, handleSubmit,errors }) => (
+      {({ values, handleChange, handleBlur, handleSubmit,errors,formProps }) => (
         <Form onSubmit={handleSubmit}>
           <div>
             <h4 className="mt-4" style={{ color: "#7C5DFA" }}>
@@ -322,15 +329,16 @@ React.useEffect(() => {
                         <Field
                           name={`friends.${index}.name`}
                           className={`${styles} mr-8 `}
+                          style={getStyles(errors, `friends.${index}.name`)}
                           
                       
                           type="text"
                         />
-                        <ErrorMessage
+                        {/* <ErrorMessage
                           name={`friends.${index}.name`}
                           component="div"
                           className="text-red-400"
-                        />
+                        /> */}
                       </div>
                       <div className="flex flex-col justify-center items-center" >
                       <p className={`${stylePara}  mr-4 w-1`}>Qty.</p>
@@ -338,8 +346,9 @@ React.useEffect(() => {
                           name={`friends.${index}.quantity`}
                           className={`${styles} ml-2 mr-4 w-16`}
                           min="0"
-                          
+                          style={getStyles(errors, `friends.${index}.quantity`)}
                           type="number"
+                        
                         />
                         <ErrorMessage
                           name={`friends.${index}.quantity`}
@@ -352,25 +361,25 @@ React.useEffect(() => {
                                               <Field
                                                 name={`friends.${index}.item`}
                                                 className={`${styles}  ml-2 mr-4 w-16`}
-                                                placeholder="item"
+                                              
+                                                min="0"
+                                                style={getStyles(errors, `friends.${index}.item`)}
                                                 type="number"
                                               />
-                                              <ErrorMessage
+                                              {/* <ErrorMessage
                                                 name={`friends.${index}.item`}
                                                 component="div"
                                                 className="text-red-400 "
-                                              />
+                                              /> */}
                                               </div>
 
 
                         <div>
                         <p className={`${stylePara} ml-4 mr-4 w-10`}>Total</p>
-                        <div className="flex justify-center items-center pt-4 font-bold"> {values.friends[index].item *
-                            values.friends[index].quantity}</div>
+                        <div className="flex justify-center items-center pt-4 font-bold"> {((values.friends[index].quantity)*(values.friends[index].item))}</div>
                             </div>
                       
 
-                   
                       <div className="flex justify-center items-cente pt-12">
                         
                         {index===0?null:<button
@@ -387,7 +396,7 @@ React.useEffect(() => {
                     type="button"
                     className="bg-slate-700 w-full mt-7 text-center p-3.5 rounded-full text-white cursor-pointer"
                     
-                    onClick={() => push({ name: "", quantity: 0, item: 0 })}
+                    onClick={() => push({ name: "", quantity:Number, item:Number })}
                   >
                     <i class="fa-solid fa-plus"></i> Add Item
                   </button>

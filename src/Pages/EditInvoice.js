@@ -6,7 +6,7 @@ import { SinupValdation } from "../components/validatorForm";
 
 import { useNavigate } from "react-router-dom";
 
-import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
+import { Formik, Field, Form, ErrorMessage, FieldArray ,getIn} from "formik";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function EditInvoice() {
@@ -17,9 +17,16 @@ export default function EditInvoice() {
   const dispatch = useDispatch();
   const styles = "h-14 mt-1 font-bold text-base rounded-md w-full border-[#dfe3fa] border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
   const stylePara="text-[#7e88c3] pt-4 font-medium text-base leading-6 font-sans";
+  function getStyles(errors, fieldName) {
+    if (getIn(errors, fieldName)) {
+      return {
+        border: '1px solid red'
+      }
+    }
+  }
 
   const OpenVal = () => {
-
+  
     // return dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })
   };
   return (
@@ -87,7 +94,7 @@ export default function EditInvoice() {
                             values,
                             handleChange,
                             handleBlur,
-                            handleSubmit,
+                            handleSubmit,errors
                           }) => (
                             <Form onSubmit={handleSubmit}>
                               <div>
@@ -311,21 +318,24 @@ export default function EditInvoice() {
                                               <Field
                                                 name={`friends.${index}.name`}
                                                 className={`${styles} mr-8 `}
-                                                placeholder="Name"
+                                                style={getStyles(errors, `friends.${index}.name`)}
+                                             
                                                 type="text"
                                               />
-                                              <ErrorMessage
+                                              {/* <ErrorMessage
                                                 name={`friends.${index}.name`}
                                                 component="div"
                                                 className="text-red-400"
-                                              />
+                                              /> */}
                                             </div>
                                             <div className="flex flex-col justify-center items-center" >
                                             <p className={`${stylePara}  mr-4 w-12`}>Qty.</p>
                                               <Field
                                                 name={`friends.${index}.quantity`}
                                                 className={`${styles}  ml-2 mr-4 w-16`}
-                                                placeholder="Quantity"
+                                                style={getStyles(errors, `friends.${index}.quantity`)}
+                                          
+                                                min="0"
                                                 type="number"
                                               />
                                               <ErrorMessage
@@ -339,14 +349,15 @@ export default function EditInvoice() {
                                               <Field
                                                 name={`friends.${index}.item`}
                                                 className={`${styles}  ml-2 mr-4 w-16`}
-                                                placeholder="item"
+                                                style={getStyles(errors, `friends.${index}.item`)}
+                                                min="0"
                                                 type="number"
                                               />
-                                              <ErrorMessage
+                                              {/* <ErrorMessage
                                                 name={`friends.${index}.item`}
                                                 component="div"
                                                 className="text-red-400"
-                                              />
+                                              /> */}
                                               </div>
 
                                               <div>
