@@ -75,7 +75,8 @@ export default function EditInvoice() {
                               "items",
                               JSON.stringify(items)
                             );
-                            dispatch({ type: "VIEW_DATA", payload: values})
+                            let data={...values,status:"pending"}
+                            dispatch({ type: "VIEW_DATA", payload: data})
                            
                             dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })
 

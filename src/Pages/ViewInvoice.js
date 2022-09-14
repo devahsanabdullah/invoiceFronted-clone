@@ -164,28 +164,44 @@ const ViewInvoice = () => {
             </div>
           </div>
           <div className="shadow-lg  bg-[#f8f8f8] w-11/12 m-8   rounded-3xl">
+          <div className="grid grid-cols-5 p-4">
+            <div>
+            <h1 className="text-[#7e88c3] font-medum">Item Name</h1>
+            </div>
+            <div></div>
+            <div> <h1 className="text-[#7e88c3] font-medum">Qty</h1></div>
+            <div> <h1 className="text-[#7e88c3] font-medum">Price</h1></div>
+            <div> <h1 className="text-[#7e88c3] font-medum">total</h1></div>
+            
+
+          </div>
+            {data&&data.friends.map((data,index)=>{
+              return(
+
+             
             <div className="grid grid-cols-5 p-4">
               <div>
-                <h1 className="text-[#7e88c3] font-medum">Item Name</h1>
-                <h1>{data.friends[0].name}</h1>
+               
+                <h1>{data.name}</h1>
               </div>
               <div></div>
               <div>
-                <h1 className="text-[#7e88c3] font-medum">Qty</h1>
-                <h1>{data.friends[0].quantity}</h1>
+              
+                <h1>{data.quantity}</h1>
               </div>
 
               <div>
-                <h1 className="text-[#7e88c3] font-medum">Price</h1>
-                <h1>{data.friends[0].item}</h1>
+               
+                <h1>{data.item}</h1>
               </div>
 
               <div>
-                <h1 className="text-[#7e88c3] font-medum">total</h1>
-                <h1>${sum}</h1>
+               
+                <h1>${data.quantity*data.item}</h1>
               </div>
             </div>
-
+ )
+})}
             <div className="flex justify-between bg-black text-white p-5 rounded-xl">
               <h1>AMOUNT DUE</h1>
               

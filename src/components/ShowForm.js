@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
 import { useNavigate } from "react-router-dom";
 
+
 const ShowForm = () => {
   function generate() {
     let length = 3;
@@ -99,7 +100,7 @@ React.useEffect(() => {
 
       }}
     >
-      {({ values, handleChange, handleBlur, handleSubmit }) => (
+      {({ values, handleChange, handleBlur, handleSubmit,errors }) => (
         <Form onSubmit={handleSubmit}>
           <div>
             <h4 className="mt-4" style={{ color: "#7C5DFA" }}>
@@ -322,6 +323,7 @@ React.useEffect(() => {
                           name={`friends.${index}.name`}
                           className={`${styles} mr-8 `}
                           
+                      
                           type="text"
                         />
                         <ErrorMessage
@@ -335,6 +337,7 @@ React.useEffect(() => {
                         <Field
                           name={`friends.${index}.quantity`}
                           className={`${styles} ml-2 mr-4 w-16`}
+                          min="0"
                           
                           type="number"
                         />
@@ -345,19 +348,20 @@ React.useEffect(() => {
                         />
                       </div>
                       <div>
-                      <p className={`${stylePara} ml-2 mr-2 w-12`}>Price</p>
-                        <Field
-                          name={`friends.${index}.item`}
-                          className={`${styles} ml-2 mr-4 w-16`}
-                         
-                          type="number"
-                        />
-                        <ErrorMessage
-                          name={`friends.${index}.item`}
-                          component="div"
-                          className="text-red-400"
-                        />
-                        </div>
+                                          <p className={`${stylePara}  mr-2 w-12`}>Price</p>
+                                              <Field
+                                                name={`friends.${index}.item`}
+                                                className={`${styles}  ml-2 mr-4 w-16`}
+                                                placeholder="item"
+                                                type="number"
+                                              />
+                                              <ErrorMessage
+                                                name={`friends.${index}.item`}
+                                                component="div"
+                                                className="text-red-400 "
+                                              />
+                                              </div>
+
 
                         <div>
                         <p className={`${stylePara} ml-4 mr-4 w-10`}>Total</p>

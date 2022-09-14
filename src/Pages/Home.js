@@ -108,8 +108,8 @@ const Home = () => {
                     <h1 className="text-lg p-4 text-gray-500">
                       {data.dateInvoice}
                     </h1>
-                    <h1 className="text-lg  text-gray-500">
-                      {data.friends[0].name}
+                    <h1 className="text-lg  text-gray-500 w-32 text-center">
+                      {data.cliendName_to}
                     </h1>
                     <h1 className="text-lg p-4 pl-5 font-extrabold">${sum}</h1>
                     <div className="text-lg p-4 ">

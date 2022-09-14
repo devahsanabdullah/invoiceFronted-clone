@@ -22,8 +22,8 @@ export const SinupValdation=yup.object({
   friends: yup.array().of(
     yup.object().shape({
       name:yup.string().min(2).required("enter name") ,
-      quantity:yup.number().min(1).max(100).required("enter quantity"),
-      item:yup.number().min(1).max(100).required("enter item"),
+      quantity:yup.number().min(1,">1").max(100,"<100").required("quantity?"),
+      item:yup.number().min(1,">1").required("price?"),
 
 
     }))
