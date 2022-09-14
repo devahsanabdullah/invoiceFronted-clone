@@ -53,7 +53,7 @@ const ViewInvoice = () => {
       }
     }
     localStorage.setItem("items", JSON.stringify(items));
-    navlink("/");
+    dispatch({ type: "VIEW_DATA", payload: newobj})
   };
 
   // end
@@ -66,9 +66,9 @@ const ViewInvoice = () => {
 
   return (
     <>
-      <div className="grid justify-center items-center w-full lg:w-full  pt-12">
+      <div className="grid justify-center items-center  w-full lg:w-full  pt-12">
         <div>
-          <button onClick={() => navlink("/")}>GO BACK</button>
+          <button className="font-extrabold text-[#7c5dfa] " onClick={() => navlink("/")}>GO BACK</button>
         </div>
         <div className=" py-5 sm:px-6 grid md:grid-cols-2 grid-cols-1 mb-5 shadow-2xl   bg-[#f8f8f8] rounded-2xl mt-4 h-42 md:h-28">
           <div className="flex md:justify-start justify-center flex-wrap items-center ">
@@ -76,11 +76,11 @@ const ViewInvoice = () => {
               Status
             </h3>
             {data.status === "pending" ? (
-              <button className="text-[#ff8f00] font-bold capitalize bg-orange-100 w-24 h-12 rounded-md">
+              <button className="bg-[#ff8f000f] font-bold capitalize text-[#ff8f00] w-24 h-12 rounded-md">
                 {data.status}
               </button>
             ) : (
-              <button className="text-lime-500 font-bold capitalize bg-lime-100 w-24 h-12 rounded-md">
+              <button className="text-lime-400 font-bold capitalize bg-lime-100 w-24 h-12 rounded-md">
                 {data.status}
               </button>
             )}
@@ -104,10 +104,10 @@ const ViewInvoice = () => {
             </button>
             {data.status === "pending" ? (
               <button
-                className="rounded-3xl bg-[#7c5dfa] text-[#ffff] w-36 h-12 p-2 ml-2 font-[Spartan]  font-medium"
+                className="rounded-3xl bg-[#7c5dfa] text-[#ffff] w-36 h-12 p-2 ml-2   font-medium"
                 onClick={changeStatus}
               >
-                Mark as Pending
+                Mark as Paid
               </button>
             ) : null}
           </div>

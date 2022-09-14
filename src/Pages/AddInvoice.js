@@ -13,7 +13,7 @@ export default function AddInvoice() {
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={dispatchFun}>
+        <Dialog as="div" className="relative z-10 " onClose={dispatchFun}>
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"
@@ -28,7 +28,7 @@ export default function AddInvoice() {
 
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
-              <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pl-10">
+              <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full ">
                 <Transition.Child as={Fragment}>
                   <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md">
                     <Transition.Child as={Fragment}>
@@ -40,9 +40,11 @@ export default function AddInvoice() {
                           <h1 className="font-bold text-3xl">New Invoice</h1>
                         </Dialog.Title>
                       </div>
-                      <div className="relative mt-6 flex-1 px-8 ml-2 md:ml-6 md:mr-6 sm:px-6">
+                      <div >
                         {/* Replace with your content */}
                         <ShowForm />
+
+                        
                         {/* /End replace */}
                       </div>
                     </div>

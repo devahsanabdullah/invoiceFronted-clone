@@ -20,7 +20,7 @@ const Home = () => {
 
     
     let value = JSON.parse(localStorage.getItem('items')) || [];
-    console.log("🚀 ~ file: Home.js ~ line 23 ~ React.useEffect ~ value", value)
+   
 
     setItems(value);
   
@@ -59,7 +59,7 @@ const Home = () => {
           <p>There are {val&&val.length} total invoices</p>
         </div>
         {/* drop down */}
-        <div className="md:pl-56 pl-16">
+        <div className="md:pl-12  lg:pl-28">
           <DropDown />
         </div>
 
@@ -101,24 +101,24 @@ const Home = () => {
               return (
                 <Link to={`/invoice-details`}   onClick={()=>  dispatch({ type: "VIEW_DATA", payload: data})} >
                   <div >
-                  <div className="grid grid-cols-3  md:grid-cols-5 hover:shadow-sm px-5 shadow-lg bg-white h-42 md:h-20 justify-center items-center hover:outline-[#7C5DFA] hover:outline-3 hover:outline shadow-slate-500 rounded-2xl w-6/6  mt-4">
+                  <div className="grid grid-cols-3  md:grid-cols-5  px-5  bg-white  justify-center items-center hover:border-[#7C5DFA] border-transparent border  shadow-lg  transition-all ease-in    rounded-lg w-6/6  mt-4">
                     <h1 className="font-extrabold p-4 ">
-                      {data.hash}
+                      #{data.hash}
                     </h1>
-                    <h1 className="text-lg p-4 text-gray-500">
+                    <h1 className=" p-4 text-gray-500">
                       {data.dateInvoice}
                     </h1>
-                    <h1 className="text-lg  text-gray-500 w-32 text-center">
-                      {data.cliendName_to}
+                    <h1 className=" overflow-hidden text-gray-500 w-32 text-center">
+                      {(data.cliendName_to).slice(0,14).concat("...")}
                     </h1>
-                    <h1 className="text-lg p-4 pl-5 font-extrabold">${sum}</h1>
-                    <div className="text-lg p-4 ">
+                    <h1 className=" p-4 pl-5 font-extrabold">${sum}</h1>
+                    <div className=" p-4 ">
                       {data.status === "pending" ? (
-                        <h1 className="bg-[#f8f8f8] text-center font-bold capitalize rounded-md text-[#ff8f00] justify-center  p-1">
+                        <h1 className="bg-[#ff8f000f] text-center text-sm capitalize rounded-md text-[#ff8f00] justify-center  p-1">
                           {data.status}
                         </h1>
                       ) : (
-                        <h1 className="bg-[#f8f8f8] text-center font-bold rounded-md capitalize  text-lime-500 justify-center p-1">
+                        <h1 className="bg-lime-400 text-center text-sm capitalize rounded-md text-lime-100 justify-center  p-1">
                           {data.status}
                         </h1>
                       )}
@@ -135,3 +135,6 @@ const Home = () => {
 };
 
 export default Home;
+
+
+// ff8f000f

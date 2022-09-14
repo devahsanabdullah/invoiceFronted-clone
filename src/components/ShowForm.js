@@ -67,7 +67,7 @@ const ShowForm = () => {
 
   const navigate = useNavigate();
   const dispatch =useDispatch();
-  const styles = "h-14 mt-1 font-bold text-base rounded-md w-full border-[#dfe3fa] border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
+  const styles = "h-14 mt-1 pl-4 font-bold text-base rounded-md w-full border-[#dfe3fa] border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
   const stylePara="text-[#7e88c3] pt-4 font-medium text-base leading-6 font-sans";
 React.useEffect(() => {
   generate()
@@ -77,6 +77,10 @@ React.useEffect(() => {
 
 
   return (
+
+
+    <div className="">
+
     <Formik
       enableReinitialize
       initialValues={initialValues}
@@ -109,6 +113,9 @@ React.useEffect(() => {
     >
       {({ values, handleChange, handleBlur, handleSubmit,errors,formProps }) => (
         <Form onSubmit={handleSubmit}>
+          
+        <div className="relative mt-6 flex-1 px-8 ml-2 md:ml-6 md:mr-6 sm:px-6">
+
           <div>
             <h4 className="mt-4" style={{ color: "#7C5DFA" }}>
               Bill From
@@ -125,7 +132,7 @@ React.useEffect(() => {
               className="text-red-600"
             />
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-3">
             <div>
               <p className={stylePara}>City</p>
               <Field
@@ -209,7 +216,7 @@ React.useEffect(() => {
               className="text-red-600"
             />
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-3">
             <div>
               <p className={stylePara}>City</p>
               <Field
@@ -249,7 +256,7 @@ React.useEffect(() => {
           </div>
           {/* end cliend information */}
 
-          <div className="grid grid-cols-2  lg:gap-3">
+          <div className="grid md:grid-cols-2 grid-cols-1  lg:gap-3">
             <div>
               <p className={stylePara}>Invoice Date</p>
               <Field
@@ -290,7 +297,14 @@ React.useEffect(() => {
                   Net 30 days
                 </option>
               </select>
+              <ErrorMessage
+              name="paymentTerm"
+              component="div"
+              className="text-red-600"
+            />
+              
             </div>
+            
           </div>
 
           <div>
@@ -344,7 +358,7 @@ React.useEffect(() => {
                       <p className={`${stylePara}  mr-4 w-1`}>Qty.</p>
                         <Field
                           name={`friends.${index}.quantity`}
-                          className={`${styles} ml-2 mr-4 w-16`}
+                          className={`${styles} ml-2 mr-4 w-18 pl-1`}
                           min="0"
                           style={getStyles(errors, `friends.${index}.quantity`)}
                           type="number"
@@ -357,10 +371,10 @@ React.useEffect(() => {
                         />
                       </div>
                       <div>
-                                          <p className={`${stylePara}  mr-2 w-12`}>Price</p>
+                                          <p className={`${stylePara}  ml-4 w-12`}>Price</p>
                                               <Field
                                                 name={`friends.${index}.item`}
-                                                className={`${styles}  ml-2 mr-4 w-16`}
+                                                className={`${styles}  ml-2 mr-4 w-18 pl-1`}
                                               
                                                 min="0"
                                                 style={getStyles(errors, `friends.${index}.item`)}
@@ -394,9 +408,9 @@ React.useEffect(() => {
                     ))}
                   <button
                     type="button"
-                    className="bg-slate-700 w-full mt-7 text-center p-3.5 rounded-full text-white cursor-pointer"
+                    className="bg-slate-700 w-full mt-7 text-center  hover:bg-slate-300 p-3.5 rounded-full text-white cursor-pointer"
                     
-                    onClick={() => push({ name: "", quantity:Number, item:Number })}
+                    onClick={() => push({ name: "", quantity:0, item:0 })}
                   >
                     <i class="fa-solid fa-plus"></i> Add Item
                   </button>
@@ -407,10 +421,12 @@ React.useEffect(() => {
 
           {/* button */}
 
-          <div className="flex justify-between shadow-zinc-900 shadow-lg h-28 px-5 pt-10 pb-5 rounded-3xl mt-10 bg-transparent w-5/5">
+          
+        </div>
+        <div className="flex justify-between   shadow-lg border-t-black px-5 pt-10 pb-5 mt-10 bg-transparent w-5/5">
             <div>
               <button
-                className="rounded-3xl bg-slate-300 py-3 px-4 text-white"
+                className="rounded-3xl bg-slate-500 py-3 px-4 text-white  hover:bg-slate-300"
                 type="button"
                 onClick={() => dispatch({type:"OPEN_ADD_INVOICE",payload:false})}
               >
@@ -420,7 +436,7 @@ React.useEffect(() => {
             <div></div>
             <div>
               <button
-                className="rounded-3xl bg-[#7C5DFA] py-2 px-2 text-white"
+                className=" bg-[#7C5DFA] hover:bg-[#8e72fe] text-white  rounded-3xl  w-40 h-12 font-bold ml-2"
                 type="submit"
               >
                 Save & Send
@@ -428,8 +444,11 @@ React.useEffect(() => {
             </div>
           </div>
         </Form>
+
       )}
     </Formik>
+    </div>
+
   );
 };
 

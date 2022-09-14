@@ -15,7 +15,7 @@ export default function EditInvoice() {
   // console.log("🚀 ~ file: EditInvoice.js ~ line 15 ~ EditInvoice ~ data", data)
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const styles = "h-14 mt-1 font-bold text-base rounded-md w-full border-[#dfe3fa] border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
+  const styles = "h-14 mt-1 pl-4 font-bold text-base rounded-md w-full border-[#dfe3fa] border-solid border-2 hover:border-[#7C5DFA] focus:outline-none focus:border-[#7C5DFA]";
   const stylePara="text-[#7e88c3] pt-4 font-medium text-base leading-6 font-sans";
   function getStyles(errors, fieldName) {
     if (getIn(errors, fieldName)) {
@@ -32,7 +32,7 @@ export default function EditInvoice() {
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={OpenVal}>
+        <Dialog as="div" className="relative z-10 " onClose={OpenVal}>
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"
@@ -47,7 +47,7 @@ export default function EditInvoice() {
 
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
-              <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pl-10">
+              <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full ">
                 <Transition.Child as={Fragment}>
                   <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md">
                     <Transition.Child as={Fragment}>
@@ -68,21 +68,23 @@ export default function EditInvoice() {
                           validationSchema={SinupValdation}
                           onSubmit={async (values) => {
                             // alert(JSON.stringify(values, null, 2));
+                            let data={...values,status:"pending"}
                             let items = await JSON.parse(
                               localStorage.getItem("items")
                             );
 
                             for (let i = 0; i < items.length; i++) {
                               if (values.hash === items[i].hash) {
-                                items[i] = values;
+                                items[i] = data;
                                 console.log(items[i]);
                               }
                             }
+                            // let newData={...items,status:"pending"}
                             localStorage.setItem(
                               "items",
                               JSON.stringify(items)
                             );
-                            let data={...values,status:"pending"}
+                            
                             dispatch({ type: "VIEW_DATA", payload: data})
                            
                             dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })
@@ -116,7 +118,7 @@ export default function EditInvoice() {
                                   className="text-red-600"
                                 />
                               </div>
-                              <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-3">
+                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-3">
                                 <div>
                                   <p className={stylePara}>City</p>
                                   <Field className={styles} name="city_from" />
@@ -193,7 +195,7 @@ export default function EditInvoice() {
                                   className="text-red-600"
                                 />
                               </div>
-                              <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-3">
+                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-3">
                                 <div>
                                   <p className={stylePara}>City</p>
                                   <Field className={styles} name="cliendCity" />
@@ -226,7 +228,7 @@ export default function EditInvoice() {
                                 </div>
                               </div>
 
-                              <div className="grid grid-cols-2  lg:gap-3">
+                              <div className="grid grid-cols-1 md:grid-cols-2  lg:gap-2">
                                 <div>
                                   <p className={stylePara}>Invoice Date</p>
                                   <Field
@@ -276,6 +278,11 @@ export default function EditInvoice() {
                                       Net 30 days
                                     </option>
                                   </select>
+                                  <ErrorMessage
+                                    name="paymentTerm"
+                                    component="div"
+                                     className="text-red-600"
+                                       />
                                 </div>
                               </div>
 
@@ -310,7 +317,7 @@ export default function EditInvoice() {
                                       {values.friends.length > 0 &&
                                         values.friends.map((friend, index) => (
                                           <div
-                                            className="grid grid-cols-6 mt-2  gap-3 "
+                                            className="grid grid-cols-6  mt-2  gap-3 "
                                             key={index}
                                           >
                                             <div className="col-span-2" >
@@ -328,11 +335,12 @@ export default function EditInvoice() {
                                                 className="text-red-400"
                                               /> */}
                                             </div>
+                                           
                                             <div className="flex flex-col justify-center items-center" >
-                                            <p className={`${stylePara}  mr-4 w-12`}>Qty.</p>
+                                            <p className={`${stylePara}  mr-4 w-12 `}>Qty.</p>
                                               <Field
                                                 name={`friends.${index}.quantity`}
-                                                className={`${styles}  ml-2 mr-4 w-16`}
+                                                className={`${styles}  ml-2 mr-4 w-18 pl-1`}
                                                 style={getStyles(errors, `friends.${index}.quantity`)}
                                           
                                                 min="0"
@@ -345,10 +353,10 @@ export default function EditInvoice() {
                                               />
                                             </div>
                                             <div>
-                                            <p className={`${stylePara}  mr-2 w-12`}>Price</p>
+                                            <p className={`${stylePara} ml-2 mr-4 w-12`}>Price</p>
                                               <Field
                                                 name={`friends.${index}.item`}
-                                                className={`${styles}  ml-2 mr-4 w-16`}
+                                                className={`${styles}  ml-2 mr-4 w-18 pl-1`}
                                                 style={getStyles(errors, `friends.${index}.item`)}
                                                 min="0"
                                                 type="number"
@@ -381,7 +389,7 @@ export default function EditInvoice() {
                                         ))}
                                       <button
                                         type="button"
-                                        className="bg-slate-700 w-full mt-7 text-center p-3.5 rounded-full text-white cursor-pointer"
+                                        className="bg-slate-700 w-full mt-7 hover:bg-slate-300 text-center p-3.5 rounded-full text-white cursor-pointer"
                                         
                                         onClick={() =>
                                           push({
@@ -403,7 +411,7 @@ export default function EditInvoice() {
                                
                                 <div>
                                   <button
-                                    className="rounded-3xl bg-slate-300 py-3 px-4 text-white"
+                                    className="rounded-3xl bg-slate-500 py-3 px-4 text-white hover:bg-[#8e72fe]"
                                     type="button"
                                    onClick={() => dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })}
                                   >
@@ -413,7 +421,7 @@ export default function EditInvoice() {
 
                                 <div>
                                   <button
-                                    className="rounded-3xl bg-[#7C5DFA] py-3 px-2 text-white"
+                                      className="rounded-3xl bg-[#7C5DFA] py-3 px-2 text-white hover:bg-[#8e72fe]"
                                     type="submit"
                                   >
                                     Save & Change
