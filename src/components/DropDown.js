@@ -82,22 +82,27 @@ export default function DropDown() {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                 <input   type="checkbox" value="pending" onChange={handleChange} checked={isChecked} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-            <label  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pending</label>
+                 <input id="checkbox-item-1"  type="checkbox" value="pending"  checked={isChecked } onClick={handleChange} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+            <label htmlFor="checkbox-item-1"  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pending</label>
                 </a>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <a
+                
                  
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}
+             
                 >
-                  <input id="checkbox-item-1" type="checkbox" value="paid"  checked={ischange} onChange={handleChange} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-          <label  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Paid</label>
+                 
+                  <input id="checkbox-item-2" type="checkbox" value="paid" checked={ischange}  onChange={handleChange}   class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                   <label 
+                  htmlFor="checkbox-item-2" class="ml-2 text-sm font-medium  text-gray-900 dark:text-gray-300">Paid</label>
+   
                 </a>
               )}
             </Menu.Item>
@@ -110,8 +115,8 @@ export default function DropDown() {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  <input  type="checkbox" value="all" onChange={handleChange}  checked={isChanger} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-          <label  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">All</label>
+                  <input  id="checkbox-item-3" type="checkbox" value="all" onChange={handleChange}  checked={isChanger} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label  htmlFor="checkbox-item-3" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">All</label>
                 </a>
               )}
             </Menu.Item>

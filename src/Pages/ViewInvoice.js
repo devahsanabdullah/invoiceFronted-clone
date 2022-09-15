@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 
 import { BiChevronLeft } from "react-icons/bi";
 import { useDispatch,useSelector } from "react-redux";
+// import DeleteItem from "../components/DeleteItem";
 // import Update from './components/Update';
 
 const ViewInvoice = () => {
@@ -23,21 +24,23 @@ const ViewInvoice = () => {
 
   }, []);
 
-  const removeData = (id) => {
-    console.log("🚀 ~ file: ViewInvoice.js ~ line 23 ~ removeData ~ items", items)
- 
-    const val = items.filter((item) => {
-     
-      return item.hash!==id
-    })
-    console.log("🚀 ~ file: ViewInvoice.js ~ line 23 ~ removeData ~ val", val)
+  // const removeData = (id) => {
 
-    localStorage.setItem("items", JSON.stringify(val));
-    if (items.length === 0) {
-      localStorage.removeItem("items");
-    }
-     navlink("/");
-  };
+   
+ 
+ 
+  //   const val = items.filter((item) => {
+     
+  //     return item.hash!==id
+  //   })
+  //   console.log("🚀 ~ file: ViewInvoice.js ~ line 23 ~ removeData ~ val", val)
+
+  //   localStorage.setItem("items", JSON.stringify(val));
+  //   if (items.length === 0) {
+  //     localStorage.removeItem("items");
+  //   }
+  //    navlink("/");
+  // };
   //  status changer
   const changeStatus = async () => {
     let newobj = {
@@ -98,7 +101,7 @@ const ViewInvoice = () => {
 
             <button
               className="rounded-3xl bg-[#ec5757] text-[#ffff] w-24 h-12 font-bold ml-2"
-              onClick={() => removeData(data.hash)}
+              onClick={() => dispatch({ type: "DELETE_INVOICE", payload: {Open:true,Data:data.hash} })}
             >
               Delete
             </button>

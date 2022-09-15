@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 const Total=0;
 const Home = () => {
   // let [state, setstate] = useState(0);
+
   const [items, setItems] = useState([]);
 
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const Home = () => {
     //   setItems([value])
     // }
    
-    dispatch({type:"SET_DATA",payload:"all"})
+     dispatch({type:"SET_DATA",payload:"all"})
    }, [newData]);
 
   
@@ -88,8 +89,7 @@ const Home = () => {
       <div className="flex flex-col items-center justify-center  mt-12 md:pl-12">
         {/* <CollectedInvoice setstate={setstate} /> */}
         <>
-          {val &&
-            val.map((data,index) => {
+          {val.length >0?val.map((data,index) => {
              
 
                var sum = data.friends.reduce((accumulator, object,index) => {
@@ -118,7 +118,7 @@ const Home = () => {
                           {data.status}
                         </h1>
                       ) : (
-                        <h1 className="bg-lime-400 text-center text-sm capitalize rounded-md text-lime-100 justify-center  p-1">
+                        <h1 className="bg-lime-100 text-center text-sm capitalize rounded-md text-lime-400 justify-center  p-1">
                           {data.status}
                         </h1>
                       )}
@@ -127,7 +127,10 @@ const Home = () => {
                   </div>
                 </Link>
               );
-            })}
+            }):<div className="w-72 h-96 text-center">
+              <img src="images/empty.svg" className="pl-5"/>
+              <h1 className="font-extrabold text-center pt-10 text-2xl">There is nothing here</h1>
+              <p className="block pt-5 ">Create an invoice by clicking the <span className="font-bold text-md text-black">New Invoice</span>  button and get started, or change the <span className="font-bold text-md text-black"> Filter by Status</span></p></div>}
         </>
       </div>
     </>

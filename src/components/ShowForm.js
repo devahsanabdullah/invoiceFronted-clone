@@ -261,7 +261,7 @@ React.useEffect(() => {
               <p className={stylePara}>Invoice Date</p>
               <Field
                 type="date"
-                className={styles}
+                className={`${styles} cursor-pointer` }
                 name="dateInvoice"
               />
               <ErrorMessage
@@ -275,7 +275,7 @@ React.useEffect(() => {
               
               <select
                 name="paymentTerm"
-                className={styles}
+                className={`${styles} cursor-pointer`}
                 value={values.color}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -359,7 +359,7 @@ React.useEffect(() => {
                         <Field
                           name={`friends.${index}.quantity`}
                           className={`${styles} ml-2 mr-4 w-18 pl-1`}
-                          min="0"
+                        
                           style={getStyles(errors, `friends.${index}.quantity`)}
                           type="number"
                         
@@ -376,7 +376,7 @@ React.useEffect(() => {
                                                 name={`friends.${index}.item`}
                                                 className={`${styles}  ml-2 mr-4 w-18 pl-1`}
                                               
-                                                min="0"
+                                              
                                                 style={getStyles(errors, `friends.${index}.item`)}
                                                 type="number"
                                               />
@@ -410,7 +410,7 @@ React.useEffect(() => {
                     type="button"
                     className="bg-slate-700 w-full mt-7 text-center  hover:bg-slate-300 p-3.5 rounded-full text-white cursor-pointer"
                     
-                    onClick={() => push({ name: "", quantity:0, item:0 })}
+                    onClick={() => push({ name: "", quantity:"", item:"" })}
                   >
                     <i class="fa-solid fa-plus"></i> Add Item
                   </button>

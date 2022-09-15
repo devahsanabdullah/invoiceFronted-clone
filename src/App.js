@@ -10,6 +10,7 @@ import Home from "./Pages/Home";
 import AddInvoice from "./Pages/AddInvoice";
 import ViewInvoice from "./Pages/ViewInvoice";
 import EditInvoice from "./Pages/EditInvoice";
+import DeleteItem from "./components/DeleteItem";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         </Routes>
         <AddInvoice />
         <EditInvoice />
+        <DeleteItem />
       </BrowserRouter>
 
     </>

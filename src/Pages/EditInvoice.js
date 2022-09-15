@@ -343,7 +343,7 @@ export default function EditInvoice() {
                                                 className={`${styles}  ml-2 mr-4 w-18 pl-1`}
                                                 style={getStyles(errors, `friends.${index}.quantity`)}
                                           
-                                                min="0"
+                                                
                                                 type="number"
                                               />
                                               <ErrorMessage
@@ -358,7 +358,7 @@ export default function EditInvoice() {
                                                 name={`friends.${index}.item`}
                                                 className={`${styles}  ml-2 mr-4 w-18 pl-1`}
                                                 style={getStyles(errors, `friends.${index}.item`)}
-                                                min="0"
+                                                
                                                 type="number"
                                               />
                                               {/* <ErrorMessage
@@ -421,7 +421,7 @@ export default function EditInvoice() {
 
                                 <div>
                                   <button
-                                      className="rounded-3xl bg-[#7C5DFA] py-3 px-2 text-white hover:bg-[#8e72fe]"
+                                       className=" bg-[#7C5DFA] hover:bg-[#8e72fe] text-white  rounded-3xl  w-40 h-12 font-bold ml-2"
                                     type="submit"
                                   >
                                     Save & Change

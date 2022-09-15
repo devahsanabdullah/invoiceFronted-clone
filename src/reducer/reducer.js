@@ -6,6 +6,9 @@ const initialState = {
    editInvoiceOpen:false,
    localData:[],
    viewData:[],
+   deleteOpen:false,
+   deleteData:"",
+
        
  }
  
@@ -47,7 +50,14 @@ const initialState = {
         
                         
                             }            
-    
+                            case 'DELETE_INVOICE':
+                                return {
+                                ...state,
+                     
+                                deleteData:action.payload.Data,
+                                deleteOpen:action.payload.Open
+                                
+                                    }
       
  
        default:
