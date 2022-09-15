@@ -166,7 +166,7 @@ const ViewInvoice = () => {
               </h1>
             </div>
           </div>
-          <div className="shadow-lg  bg-[#f8f8f8] w-11/12 m-8   rounded-3xl">
+          <div className="shadow-lg  bg-[#f8f8f8] w-11/12 m-8   rounded-xl">
           <div className="grid grid-cols-5 p-4">
             <div>
             <h1 className="text-[#7e88c3] font-medum">Item Name</h1>

@@ -408,7 +408,7 @@ React.useEffect(() => {
                     ))}
                   <button
                     type="button"
-                    className="bg-slate-700 w-full mt-7 text-center  hover:bg-slate-300 p-3.5 rounded-full text-white cursor-pointer"
+                    className="bg-slate-700 w-full mt-7 text-center  hover:bg-slate-600 p-3.5 rounded-full text-white cursor-pointer"
                     
                     onClick={() => push({ name: "", quantity:"", item:"" })}
                   >
@@ -426,7 +426,7 @@ React.useEffect(() => {
         <div className="flex justify-between   shadow-lg border-t-black px-5 pt-10 pb-5 mt-10 bg-transparent w-5/5">
             <div>
               <button
-                className="rounded-3xl bg-slate-500 py-3 px-4 text-white  hover:bg-slate-300"
+                className="rounded-3xl bg-slate-500 py-3 px-4 text-white font-bold hover:bg-[#8e72fe]"
                 type="button"
                 onClick={() => dispatch({type:"OPEN_ADD_INVOICE",payload:false})}
               >

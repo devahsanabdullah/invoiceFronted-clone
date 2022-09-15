@@ -15,9 +15,18 @@ export default function DropDown() {
   const [isChanger, setIsChanger] = useState(Boolean);
 
   const dispatch=useDispatch();
-  function handleChange(event) {
+  function changeHandle(event)
+  {
+    if(event==="paid")
+    {
 
-    if(event.target.value==="pending")
+    
+    setIsChecked(false);
+    setIsChange(true);
+    setIsChanger(false);
+    dispatch({type:"SET_DATA",payload:"paid"})
+    }
+    if(event==="pending")
     {
      
         // setStoreVal("pending")
@@ -29,20 +38,10 @@ export default function DropDown() {
      
         
     }
-    if(event.target.value==="paid")
-    {
-     
-        
-        setIsChecked(false);
-        setIsChange(true);
-        setIsChanger(false);
-        dispatch({type:"SET_DATA",payload:"paid"})
-     
-    }
-    if(event.target.value==="all")
+    if(event==="all")
     {
       
-        
+        cd 
         setIsChecked(false);
         setIsChange(false);
         setIsChanger(true);
@@ -51,12 +50,15 @@ export default function DropDown() {
       
      
     }
+
+    
   }
+ 
 
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center rounded-md border border-none bg-transparent px-4 py-2 text-lg font-bold  text-gray-700  focus:outline-none  ">
+        <Menu.Button className="inline-flex w-full items-end justify-items-center justify-center rounded-md border border-none bg-transparent px-4 py-2 text-lg font-bold  text-gray-700  focus:outline-none  ">
         Filter by Status
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5 text-[#7C5DFA]" aria-hidden="true" />
         </Menu.Button>
@@ -81,8 +83,9 @@ export default function DropDown() {
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}
+                  onClick={()=>changeHandle("pending")}
                 >
-                 <input id="checkbox-item-1"  type="checkbox" value="pending"  checked={isChecked } onClick={handleChange} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                 <input id="checkbox-item-1"  type="checkbox" value="pending"  checked={isChecked }  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
             <label htmlFor="checkbox-item-1"  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pending</label>
                 </a>
               )}
@@ -96,10 +99,11 @@ export default function DropDown() {
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}
+                  onClick={()=>changeHandle("paid")}
              
                 >
                  
-                  <input id="checkbox-item-2" type="checkbox" value="paid" checked={ischange}  onChange={handleChange}   class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                  <input id="checkbox-item-2" type="checkbox" value="paid" checked={ischange}    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
                    <label 
                   htmlFor="checkbox-item-2" class="ml-2 text-sm font-medium  text-gray-900 dark:text-gray-300">Paid</label>
    
@@ -114,8 +118,9 @@ export default function DropDown() {
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}
+                  onClick={()=>changeHandle("all")}
                 >
-                  <input  id="checkbox-item-3" type="checkbox" value="all" onChange={handleChange}  checked={isChanger} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                  <input  id="checkbox-item-3" type="checkbox" value="all"  checked={isChanger} class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label  htmlFor="checkbox-item-3" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">All</label>
                 </a>
               )}

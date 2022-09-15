@@ -389,7 +389,7 @@ export default function EditInvoice() {
                                         ))}
                                       <button
                                         type="button"
-                                        className="bg-slate-700 w-full mt-7 hover:bg-slate-300 text-center p-3.5 rounded-full text-white cursor-pointer"
+                                        className="bg-slate-700 w-full mt-7 hover:bg-slate-600 text-center p-3.5 rounded-full text-white cursor-pointer"
                                         
                                         onClick={() =>
                                           push({
@@ -411,7 +411,7 @@ export default function EditInvoice() {
                                
                                 <div>
                                   <button
-                                    className="rounded-3xl bg-slate-500 py-3 px-4 text-white hover:bg-[#8e72fe]"
+                                    className="rounded-3xl bg-slate-500 py-3 px-4 font-bold  text-white hover:bg-[#8e72fe]"
                                     type="button"
                                    onClick={() => dispatch({ type: "EDIT_INVOICE", payload: {drawerOpen:false,drawerData:data} })}
                                   >

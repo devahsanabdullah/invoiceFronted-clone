@@ -64,9 +64,9 @@ const Home = () => {
           <DropDown />
         </div>
 
-        <div className="pl-16">
+        <div className="pl-16 flex ">
           <button
-            class="bg-[#7C5DFA] hover:bg-blue-700 text-white font-bold text-center  py-2 px-2 justify-center rounded-full flex content-center"
+            class="bg-[#7C5DFA] hover:bg-blue-700 items-center	 text-white font-bold text-center justify-items-center py-2 px-2 justify-center rounded-full flex content-center"
             onClick={() => dispatch({type:"OPEN_ADD_INVOICE",payload:true})}
             
           >
