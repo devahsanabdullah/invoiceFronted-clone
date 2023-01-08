@@ -22,7 +22,7 @@ export const SinupValdation=yup.object({
   friends: yup.array().of(
     yup.object().shape({
       name:yup.string().min(2).matches(/^[aA-zZ\s]+$/, "Only alphabets ").required("Enter") ,
-      quantity:yup.number().min(1,null).positive("Positive").max(100,"<100").typeError("Number").required("Quantity?"),
+      quantity:yup.number().min(1,null).positive("Positive").max(100,"less 100").typeError("Number").required("Quantity?"),
       item:yup.number().min(1,null).positive("Positive Number").typeError("Number").required("Price?"),
 
 

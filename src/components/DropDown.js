@@ -41,7 +41,7 @@ export default function DropDown() {
     if(event==="all")
     {
       
-        cd 
+        
         setIsChecked(false);
         setIsChange(false);
         setIsChanger(true);
